@@ -1,12 +1,10 @@
 package com.lottoland.springboot.web.app.models;
 
 public class Player {
-	String name;
+	PlayerType name;
 	Choices choice;
-	int wins;
-	int loss;
 
-	public Player(String name, Choices choice) {
+	public Player(PlayerType name, Choices choice) {
 		super();
 		this.name = name;
 		this.choice = choice;
@@ -20,33 +18,17 @@ public class Player {
 		this.choice = choice;
 	}
 
-	public int getWins() {
-		return wins;
+
+	public PlayerType getName() {
+		return name;
 	}
 
-	public void setWins(int wins) {
-		this.wins = wins;
-	}
-
-	public int getLoss() {
-		return loss;
-	}
-
-	public void setLoss(int loss) {
-		this.loss = loss;
-	}
-
-	@Override
-	public String toString() {
-		if (name.isBlank()) {
-			return "";
-		}
-		return name + " wins!!";
+	public void setName(PlayerType name) {
+		this.name = name;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
 		return super.equals(obj);
 	}
 
@@ -55,6 +37,14 @@ public class Player {
 		// TODO Auto-generated method stub
 		return super.hashCode();
 	}
+
+	@Override
+	public String toString() {
+		return getName() + " wins";
+	}
+	
+	
+	
 	
 	
 

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 
 import com.lottoland.springboot.web.app.models.Choices;
+import com.lottoland.springboot.web.app.models.Player;
 import com.lottoland.springboot.web.app.models.Round;
 
 public class GameServiceTest {
@@ -26,17 +27,21 @@ public class GameServiceTest {
 		log.info("Player 1 choose: " + player1Choice.name());
 		log.info("Player 2 choose: " + player2Choice.name());
 		
+		Player winner = round.getWinner().orElse(null);
 		switch (round.getPlayer2().getChoice()) {
 		case PAPER:
-			Assertions.assertEquals(round.getWinner(), round.getPlayer2());
-			log.info(round.getWinner().toString());
+			Assertions.assertTrue(round.getWinner().isPresent());
+			Assertions.assertEquals(winner, round.getPlayer2());
+			log.info(winner.toString());
 			break;
 		case SCISSORS:
-			Assertions.assertEquals(round.getWinner(), round.getPlayer1());
-			log.info(round.getWinner().toString());
+			Assertions.assertTrue(round.getWinner().isPresent());
+			Assertions.assertEquals(winner, round.getPlayer1());
+			log.info(winner.toString());
 			break;
 		case ROCK:
-			Assertions.assertEquals(round.getWinner(), null);
+			Assertions.assertTrue(round.getWinner().isEmpty());
+			Assertions.assertEquals(winner, null);
 			log.info("Draw!");
 		}
 	

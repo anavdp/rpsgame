@@ -1,16 +1,18 @@
 package com.lottoland.springboot.web.app.models;
 
+import java.util.Optional;
+
 public class Round {
 
-	Player player1;
-	Player player2;
+	private Player player1;
+	private Player player2;
 
-	Player winner;
+	private Optional<Player> winner;
 
 	public Round() {
 		super();
-		this.player1 = new Player("Player 1", Choices.ROCK);
-		this.player2 = new Player("Player 2", Choices.getRandom());
+		this.player1 = new Player(PlayerType.PLAYER_ONE, Choices.ROCK);
+		this.player2 = new Player(PlayerType.PLAYER_TWO, Choices.getRandom());
 	}
 
 	public Player getPlayer1() {
@@ -21,13 +23,15 @@ public class Round {
 		return player2;
 	}
 
-	public void setWinner(Player winner) {
+	public Optional<Player> getWinner() {
+		return winner;
+	}
+
+	public void setWinner(Optional<Player> winner) {
 		this.winner = winner;
 	}
 
-	public Player getWinner() {
-		return winner;
-	}
+
 	
 	
 

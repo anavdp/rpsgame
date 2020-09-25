@@ -6,4 +6,11 @@ public interface GameService {
 
 	Round playRound();
 	
+	long playerOneTotalWins();
+	
+	long playerTwoTotalWins();
+	
+	long totalDraws();
+	
+	long totalRounds();
 }
